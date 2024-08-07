@@ -47,7 +47,7 @@ function loadMessages() {
         chatBox.innerHTML = ''; // Clear chat box
         messages.forEach(message => {
             const msgDiv = document.createElement('div');
-            msgDiv.textContent = `${message.username}: ${message.message} [${new Date(message.created_at).toLocaleString()}]`;
+            msgDiv.textContent = `${message.username}: ${message.message}`;
             chatBox.appendChild(msgDiv);
         });
     });
