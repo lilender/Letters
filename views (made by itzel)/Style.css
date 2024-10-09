@@ -19,21 +19,11 @@
     background-attachment: fixed;
 }
 
-html, body {
-  height: calc(100%);
-  margin: 0; /* Quita los márgenes por defecto */
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
 
 .background-index{
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  min-height: calc(100%); /* Asegura que el body siempre abarque toda la pantalla */
-  display: flex;
-  flex-direction: column;
 }
 
 .column{
@@ -126,7 +116,7 @@ nav ul li:hover{
   border-radius: 3rem;
   border-top-right-radius: 0rem;
   text-align: center;
-  height: calc(100%);
+  height: 57.5rem
 }
 
 .nav-bar-container h1{
@@ -139,41 +129,39 @@ nav ul li:hover{
 .nav-bar-section-line{
   background: #201c3f;
   height: 0.1rem;
-  width: 95%;
+  width: 100%;
   border-radius: 0.2rem;
 }
 
 .nav-bar-groups{
   background: #ffffff00;
   border-bottom: 0.1rem solid #201c3f8d;
-  width: 90%;
-  position: relative;
-}
-
-.nav-bar-groups:hover{
-  background: linear-gradient(90deg, rgba(114,148,144,0.5282563709077381) 0%, rgba(127,235,105,0.30136561460521705) 50%, rgba(114,148,144,0.5254552504595589) 100%);
-}
-
-.nav-bar-groups h3{
-  color: #100C50;
-  font-size: 1.2rem;
-  display: inline-block;
-}
-
-.nav-bar-groups p{
-  color: #0C1F50;
-  font-size: 1rem;
-  display: inline-block;
-}
-
-.nav-bar-groups img{
   width: 100%;
+  position: relative;
+  &:hover{
+    background-color: #6a9bc5;
+  }
+  h3{
+    color: #100C50;
+    font-size: 1.2rem;
+    display: inline-block;
+    margin: 0.1rem;
+  }
+  p{
+    color: #0C1F50;
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0.1rem;
+  }
+  img{
+    width: 70%;
+  }
 }
 
 .nav-bar-chat-container{
   flex-grow: 1; /* Ocupa el espacio restante */
   overflow-y: auto; /* Habilita el scroll vertical */
-  
+  height: 28.5rem;
   min-height: calc(100%); /* Resta el footer */
   &::-webkit-scrollbar{
     width: 0.4rem; /* Ancho de la barra de desplazamiento */
@@ -190,6 +178,8 @@ nav ul li:hover{
     background-color: #0c3453; /* Color cuando el usuario pasa el mouse */
   }
 }
+
+
 
 .nav-bar-footer{
   margin-top: 0.3rem;
@@ -283,16 +273,15 @@ nav ul li:hover{
   text-align: start;
   border-radius: 0.5rem;
   border-top-right-radius: 0rem;
-}
-
-.user-messages p{
-  color: #ffffff;
-  font-family: Montserrat;
-  font-size: 1.15rem;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0rem;
-  -webkit-text-stroke: 0.02rem rgb(255, 255, 255);
+  p{
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0rem;
+    -webkit-text-stroke: 0.02rem rgb(255, 255, 255);
+  }
 }
 
 .date{
@@ -362,12 +351,12 @@ nav ul li:hover{
     width: 3.1%;
     position: fixed;
     z-index: 10;
-    left: 38.5rem;
-    bottom: 1.4rem;
+    left: 39rem;
+    bottom: 1.45rem;
     &:hover{
       width: 3.3%;
-      left: 38.4rem;
-      bottom: 1.2rem;
+      left: 38.9rem;
+      bottom: 1.35rem;
 
     }
   }
@@ -399,6 +388,8 @@ nav ul li:hover{
 .chat-input{
   width: 100%;
 }
+
+
 
 /*Foto de perfil chats*/
 .profile-image{
@@ -629,3 +620,32 @@ input:focus{
     50%   {transform: translatey(-20px)}
     100%   {transform: translatey(0px);}
   }
+
+/*Marla screen: 1434x856*/
+@media screen and (1434px <= width <=1437px) {
+  .nav-bar-container{
+    height: 64.7rem; 
+  }
+  .nav-bar-chat-container{
+    height: 35rem;
+  }
+  .chat{
+    height: 53rem;
+  }
+  .message-container{
+    input{
+      width: 90%;
+    }
+  }
+  .btn-add{
+    img{
+      left: 37.5rem;
+      bottom: 1.9rem;
+      &:hover{
+        left: 37.4rem;
+        bottom: 1.83rem;
+  
+      }
+    }
+  }
+}
