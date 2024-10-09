@@ -41,6 +41,7 @@
     box-shadow: inset 0.5rem 0.5rem 3rem #0000008a;
     text-align: center;
     align-content: center;
+    height: 99vh;
 }
 
 .box-inputs{
@@ -116,7 +117,7 @@ nav ul li:hover{
   border-radius: 3rem;
   border-top-right-radius: 0rem;
   text-align: center;
-  height: 57.5rem
+  height: 98vh;
 }
 
 .nav-bar-container h1{
@@ -161,7 +162,7 @@ nav ul li:hover{
 .nav-bar-chat-container{
   flex-grow: 1; /* Ocupa el espacio restante */
   overflow-y: auto; /* Habilita el scroll vertical */
-  height: 28.5rem;
+  height: 100%;
   min-height: calc(100%); /* Resta el footer */
   &::-webkit-scrollbar{
     width: 0.4rem; /* Ancho de la barra de desplazamiento */
@@ -178,8 +179,6 @@ nav ul li:hover{
     background-color: #0c3453; /* Color cuando el usuario pasa el mouse */
   }
 }
-
-
 
 .nav-bar-footer{
   margin-top: 0.3rem;
@@ -234,6 +233,7 @@ nav ul li:hover{
   background-position: center;
   background-attachment: fixed;
   box-shadow: 1rem 2rem 4rem #1f233a;
+  height: 10%;
 }
 
 .profile-info h3{
@@ -341,23 +341,15 @@ nav ul li:hover{
   cursor: pointer;
   width: auto;
   &:hover{
-    background-color: #294668;
     color: #ffffff;
     height: 3.18rem;
   }
   img{
     padding: 0rem;
     margin: 0rem;
-    width: 3.1%;
-    position: fixed;
-    z-index: 10;
-    left: 39rem;
-    bottom: 1.45rem;
+    width: 100%;
     &:hover{
-      width: 3.3%;
-      left: 38.9rem;
-      bottom: 1.35rem;
-
+      width: 107%;
     }
   }
 }
@@ -380,9 +372,10 @@ nav ul li:hover{
   vertical-align: middle;
 }
 
+
 .chat{
-  height: 46rem;
   width: 100%;
+  height: 79vh;
 }
 
 .chat-input{
