@@ -234,6 +234,7 @@ nav ul li:hover{
   background-attachment: fixed;
   box-shadow: 1rem 2rem 4rem #1f233a;
   height: 10%;
+  cursor: pointer;
 }
 
 .profile-info h3{
@@ -322,9 +323,12 @@ nav ul li:hover{
   button{
     width: 3.1rem;
     height: 3.15rem;
-    border-radius: 50%;
     position: relative;
     outline: 0;
+  }
+  .btn-normal{
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
   }
 }
 
@@ -336,6 +340,8 @@ nav ul li:hover{
   font-size: 0.5rem;
   border: none;
   border-bottom: 0.15rem solid white;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
   outline: none;
   text-align: center;
   cursor: pointer;
@@ -349,9 +355,28 @@ nav ul li:hover{
     margin: 0rem;
     width: 100%;
     &:hover{
-      width: 107%;
+      width: 110%;
     }
   }
+}
+
+.btn-invisible{
+    background: #00000000;
+    border: none;
+}
+
+.dropdown-menu{
+    background: #0C1F50;
+    --bs-border-radius: 0.475rem;
+    --bs-border-top-left-radius: 0%;
+    a{
+    color: #ffffff;
+        &:hover{
+            background: #0C1F50;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+    }
 }
 
 /*Foto de perfil no chats :p*/

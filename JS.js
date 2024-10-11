@@ -22,3 +22,7 @@ function toLogIn(){
 function toIndex(){
   window.location.href = 'index.html';
 }
+
+function toUserfiles(){
+    window.location.href = 'index.html';
+  }
