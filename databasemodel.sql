@@ -1,4 +1,4 @@
--- CREATE DATABASE letters;
+CREATE DATABASE letters;
 USE letters;
 
 DROP TABLE IF EXISTS mensajes;
