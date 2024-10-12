@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt'); // For password hashing
 const bodyParser = require('body-parser');
 
 // Import routes
-const userRoutes = require('routes');
+const userRoutes = require('./routes');
 
 // Initialize app and server
 const app = express();
