@@ -31,7 +31,7 @@ app.get('/signin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signin.html'));
 });
 app.get('/careers', (req, res) => {
-    CarreraController.get(req, res);
+    carreraController.get(req, res);
 });
 app.post('/register', userController.register);
 app.post('/login', userController.login);
