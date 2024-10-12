@@ -15,7 +15,7 @@ const UserController = {
                 res.redirect('/login');
             });
         });*/
-        alert('register');
+        console.log('register');
     }
 };
 
