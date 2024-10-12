@@ -1,6 +1,6 @@
-const db = require('../db'); // Separate module for DB connection
+const db = require('../db');
 
-const UserModel = {
+const UsuarioModel = {
     findByUsername: (username, callback) => {
         const query = 'SELECT * FROM users WHERE username = ?';
         db.query(query, [username], callback);
@@ -11,4 +11,4 @@ const UserModel = {
     },
 };
 
-module.exports = UserModel;
+module.exports = UsuarioModel;

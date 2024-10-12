@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const userController = require('./controllers/userController');
+const carreraController = require('./controllers/carreraController');
 
 // Redirect the root URL to /login
 app.get('/', (req, res) => {
@@ -29,8 +30,12 @@ app.get('/login', (req, res) => {
 app.get('/signin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signin.html'));
 });
+app.get('/careers', (req, res) => {
+    CarreraController.get(req, res);
+});
 app.post('/register', userController.register);
 app.post('/login', userController.login);
+
 
 
 // WebSocket for real-time chat

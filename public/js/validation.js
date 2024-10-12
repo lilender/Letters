@@ -42,7 +42,9 @@ function register() {
     if (inputDate < minDate || inputDate > today) {
         alert += "Ingrese una fecha de nacimiento válida\n";
     }
-    
+    if($("#career").selectedIndex == 0){
+        alert += "Seleccione una carrera\n";
+    }
     if($("#password").val().trim() == ""){
         alert += "Ingrese una contraseña\n";
     }
