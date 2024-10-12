@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
-app.use('/user', userRoutes);  // Routes for user-related actions like login/register
+app.use('/login', userRoutes);  // Routes for user-related actions like login/register
 
 // Serve login and chat pages
 app.get('/login', (req, res) => {
