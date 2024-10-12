@@ -4,9 +4,6 @@ const socketIo = require('socket.io');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-// Import routes
-const userRoutes = require('./routes');
-
 // Initialize app and server
 const app = express();
 const server = http.createServer(app);
@@ -23,15 +20,12 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/user', userRoutes);  // Routes for user-related actions like login/register
-
-// Serve login and chat pages
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-app.get('/chat', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'chat.html'));
+app.get('/signin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'signin.html'));
 });
 
 
