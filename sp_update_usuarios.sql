@@ -1,5 +1,3 @@
--- DO NOT USE
-
 USE letters;
 
 DROP PROCEDURE IF EXISTS sp_update_usuarios;
@@ -12,7 +10,6 @@ CREATE PROCEDURE sp_update_usuarios (
     IN apellido_paterno VARCHAR(50),
     IN apellido_materno VARCHAR(50),
     IN correo           VARCHAR(50),
-    IN usuario          VARCHAR(50),
     IN contrasena_hash  CHAR(64),
     IN f_nacimiento     DATE,
     IN XP               SMALLINT,
@@ -23,13 +20,12 @@ CREATE PROCEDURE sp_update_usuarios (
 BEGIN
 
 	IF opcion = 'agregar' THEN
-        INSERT INTO usuarios (nombres, apellido_paterno, apellido_materno, correo, usuario, contrasena_hash, f_nacimiento, estatus, f_ultimo_acceso, imagen, ID_carrera)
+        INSERT INTO usuarios (nombres, apellido_paterno, apellido_materno, correo, contrasena_hash, f_nacimiento, estatus, f_ultimo_acceso, imagen, ID_carrera)
 		VALUES (
 			nombres, 
 			apellido_paterno, 
 			apellido_materno, 
 			correo, 
-			usuario, 
 			SHA2(contrasena_hash, 256),
 			f_nacimiento, 
 			false,
@@ -39,11 +35,8 @@ BEGIN
 		);
     END IF;
     IF opcion = 'inicio' THEN
-		SELECT usuario AS DebugUsuario;
         
-        SET @ID_usuario_var = (SELECT u.ID_usuario FROM usuarios u WHERE u.usuario = usuario);
-        SELECT @ID_usuario_var AS DebugMessage;
-		
+        SET @ID_usuario_var = (SELECT u.ID_usuario FROM usuarios u WHERE u.correo = correo);
         
 		IF (SELECT contrasena_hash FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) = SHA2(contrasena_hash, 256) THEN
 			IF (SELECT f_ultimo_acceso FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) <= NOW() - INTERVAL 2 DAY THEN

@@ -24,7 +24,6 @@ CREATE TABLE usuarios (
     apellido_paterno    VARCHAR(50) NOT NULL,
     apellido_materno    VARCHAR(50) NOT NULL,
     correo              VARCHAR(50) UNIQUE NOT NULL,
-    usuario             VARCHAR(50) UNIQUE NOT NULL,
     contrasena_hash     CHAR(64) NOT NULL,
     f_nacimiento        DATE NOT NULL,
     f_registro          DATETIME DEFAULT CURRENT_TIMESTAMP,
