@@ -2,7 +2,7 @@ const db = require('../db');
 
 const CarreraModel = {
     get: (callback) => {
-        const query = 'SELECT * FROM carrera';
+        const query = 'SELECT * FROM carreras';
         db.query(query, callback);
     },
 };

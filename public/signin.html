@@ -94,7 +94,6 @@
                     return response.json(); // Parse JSON data
                 })
                 .then(data => {
-                    console.log(data);
                     const select = document.getElementById('career');
                     data.forEach(career => {
                         const option = document.createElement('option');
