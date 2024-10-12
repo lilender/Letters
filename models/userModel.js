@@ -1,4 +1,4 @@
-const db = require('./db'); // Separate module for DB connection
+const db = require('../db'); // Separate module for DB connection
 
 const UserModel = {
     findByUsername: (username, callback) => {
