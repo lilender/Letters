@@ -2,7 +2,6 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
-const bcrypt = require('bcrypt'); // For password hashing
 const bodyParser = require('body-parser');
 
 // Import routes
@@ -18,8 +17,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Redirect the root URL to /login
+app.get('/', (req, res) => {
+    res.redirect('/login');
+});
+
 // Routes
-app.use('/login', userRoutes);  // Routes for user-related actions like login/register
+app.use('/user', userRoutes);  // Routes for user-related actions like login/register
 
 // Serve login and chat pages
 app.get('/login', (req, res) => {
@@ -29,6 +33,7 @@ app.get('/login', (req, res) => {
 app.get('/chat', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'chat.html'));
 });
+
 
 // WebSocket for real-time chat
 io.on('connection', (socket) => {
