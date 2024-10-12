@@ -28,6 +28,22 @@ db.connect(err => {
     console.log('MySQL connected...');
 });
 
+window.location.href = 'login.html';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Handle registration
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
