@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const userController = require('./userController');
+const userController = require('./controllers/userController');
 
 // Redirect the root URL to /login
 app.get('/', (req, res) => {
