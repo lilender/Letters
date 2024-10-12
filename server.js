@@ -29,8 +29,8 @@ app.get('/login', (req, res) => {
 app.get('/signin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signin.html'));
 });
-app.post('/register', userController.registerUser);
-app.post('/login', userController.loginUser);
+app.post('/register', userController.register);
+app.post('/login', userController.login);
 
 
 // WebSocket for real-time chat
