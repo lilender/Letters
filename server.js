@@ -14,6 +14,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const userController = require('./userController');
+
 // Redirect the root URL to /login
 app.get('/', (req, res) => {
     res.redirect('/login');
@@ -27,6 +29,8 @@ app.get('/login', (req, res) => {
 app.get('/signin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signin.html'));
 });
+app.post('/register', userController.registerUser);
+app.post('/login', userController.loginUser);
 
 
 // WebSocket for real-time chat

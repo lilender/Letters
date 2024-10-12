@@ -9,12 +9,13 @@ const UserController = {
         });
     },
     register: (req, res) => {
-        const { username, password } = req.body;
+        /*const { username, password } = req.body;
         bcrypt.hash(password, 10, (err, hash) => {
             UserModel.createUser(username, hash, (err, result) => {
                 res.redirect('/login');
             });
-        });
+        });*/
+        alert('register');
     }
 };
 

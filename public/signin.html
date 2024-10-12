@@ -26,7 +26,7 @@
                         </div>    
                     </div>
                     <div class="row pt-2">
-                        <form action="index.html">
+                        <form id="login-form" action="/signin" onsubmit="return register()" method="POST">
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <input class="input-signin" type="text" id="name" name="name" placeholder="Ingrese nombre(s)">
@@ -58,7 +58,7 @@
                                     </div>
                                     <input class="mb-3" type="text" id="phd" name="phd" placeholder="Seleccione carrera de FCFM">                        
                                     <input class="mb-3" type="password" id="password" name="password" placeholder="Ingrese contraseña">                        
-                                    <input class="mb-3" type="password" id="password" name="password" placeholder="Confirme contraseña">     
+                                    <input class="mb-3" type="password" id="password2" name="password" placeholder="Confirme contraseña">     
                                 </div>
                             </div>
                             
@@ -76,4 +76,8 @@
             </div>
         </div>
     </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/validation.js"></script>
 </html>
