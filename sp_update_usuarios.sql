@@ -1,3 +1,5 @@
+-- DO NOT USE
+
 USE letters;
 
 DROP PROCEDURE IF EXISTS sp_update_usuarios;

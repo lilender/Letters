@@ -1,3 +1,5 @@
+-- DO NOT USE
+
 CALL sp_update_usuarios(
     'agregar',           -- opcion
     'John',              -- nombres
