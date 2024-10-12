@@ -6,7 +6,7 @@ const UsuarioModel = {
         db.query(query, [username], callback);
     },
     createUser: (username, hashedPassword, callback) => {
-        const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
+        const query = "CALL sp_update_usuarios('agregar','?','?');";
         db.query(query, [username, hashedPassword], callback);
     },
 };

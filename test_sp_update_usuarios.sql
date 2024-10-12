@@ -6,7 +6,6 @@ CALL sp_update_usuarios(
     'Doe',               -- apellido_paterno
     'Smith',             -- apellido_materno
     'user@example.com',  -- correo
-    'john_doe',          -- usuario
     'securepassword',    -- contrasena_hash
     '1990-01-01',        -- f_nacimiento,
     NULL,				 -- XP
