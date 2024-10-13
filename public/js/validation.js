@@ -89,6 +89,33 @@ function register() {
     
 }
 
+function login(){
+    let alert = "";
+    if ($("#email").val().trim() == "") {
+        alert += "Ingrese su correo\n";
+    }
+    let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+([a-z0-9\.!#$%&'*+/=?^_`{|}~-]+)*@([a-z0-9]+\.)+[a-z0-9]+/;
+    if(!regex.test($("#email").val().trim())){
+        alert += "Ingrese un correo válido\n";
+    }
+    if($("#email").val().trim().length > 50){
+        alert += "El correo no debe exceder los 50 caracteres\n";
+    }
+    if($("#password").val().trim() == ""){
+        alert += "Ingrese una contraseña\n";
+    }
+    if($("#password").val().trim().length > 64){
+        alert += "La contraseña no debe exceder los 64 caracteres\n";
+    }
+
+    if(alert != ""){
+        alertCustom(alert);
+        return false;
+    }
+    
+    return true;
+}
+
 function alertCustom(title){
     Swal.fire({
         title: title,

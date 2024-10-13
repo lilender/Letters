@@ -60,6 +60,9 @@ BEGIN
 				END IF;
 			END IF;
         END IF;
+
+        SELECT * FROM usuarios WHERE ID_usuario = @ID_usuario_var;
+
     END IF;
     IF opcion = 'salida' THEN
         UPDATE usuarios u

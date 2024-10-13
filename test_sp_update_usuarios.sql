@@ -20,7 +20,6 @@ CALL sp_update_usuarios(
     NULL,               -- apellido_paterno
     NULL,             -- apellido_materno
     NULL,  -- correo
-    'john_doe',          -- usuario
     'securepassword',    -- contrasena_hash
     NULL,        -- f_nacimiento,
     NULL,				 -- XP
@@ -35,7 +34,6 @@ CALL sp_update_usuarios(
     NULL,               -- apellido_paterno
     NULL,             -- apellido_materno
     NULL,  -- correo
-    NULL,          -- usuario
     NULL,    -- contrasena_hash
     NULL,        -- f_nacimiento,
     NULL,				 -- XP

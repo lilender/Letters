@@ -3,10 +3,20 @@ const UsuarioModel = require('../models/UsuarioModel');
 
 const UserController = {
     login: (req, res) => {
-        const { username, password } = req.body;
-        UsuarioModel.findByUsername(username, (err, results) => {
-            // Authentication logic here
-        });
+        UsuarioModel.login(req.body['email'], req.body['password'], (err, result) => {
+            if (err) {
+                console.log('err', err);
+                return res.redirect('/login');
+            }
+            if (result.length === 0) {
+                console.log('User not found');
+                return res.redirect('/login');
+            }
+            const user = result[0];
+            req.session.user = user;
+            res.redirect('/main');
+        }
+        );
     },
     register: (req, res) => {
         console.log('req.body', req.body);
