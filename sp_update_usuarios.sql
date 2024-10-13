@@ -35,17 +35,11 @@ BEGIN
 		);
     END IF;
     IF opcion = 'inicio' THEN
-
+        
         SET @ID_usuario_var = (SELECT u.ID_usuario FROM usuarios u WHERE u.correo = correo);
         
-        SET @stored_hash = (SELECT contrasena_hash FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var));
-
-        IF (SELECT @stored_hash) = SHA2(contrasena_hash, 256) THEN
-            SELECT * FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var);
-        END IF;
-        
 		IF (SELECT contrasena_hash FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) = SHA2(contrasena_hash, 256) THEN
-			SELECT * from usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var);
+			SELECT 'Exito' AS mensaje;
             IF (SELECT f_ultimo_acceso FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) <= NOW() - INTERVAL 2 DAY THEN
 				UPDATE usuarios u
 				SET u.estatus = true,
@@ -69,7 +63,6 @@ BEGIN
         ELSE
             SELECT 'Error' AS mensaje;
         END IF;
-
     END IF;
     IF opcion = 'salida' THEN
         UPDATE usuarios u
