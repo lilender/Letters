@@ -10,6 +10,11 @@ const UserController = {
                 return res.redirect('/login');
             }
         
+            if (!result || !result[0] || result[0].length === 0) {
+                console.log('User not found or password incorrect');
+                return res.redirect('/login');
+            }
+
             const user = result[0][0];
         
             if (!user) {
