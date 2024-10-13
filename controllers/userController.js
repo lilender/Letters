@@ -16,8 +16,8 @@ const UserController = {
                 console.log('User not found');
                 return res.redirect('/login');
             }
-            //const user = result[0];
-            //req.session.user = user;
+            const user = result[0][0];
+            req.session.user = user;
             res.redirect('/main');
         }
         );
