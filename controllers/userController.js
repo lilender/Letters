@@ -10,7 +10,7 @@ const UserController = {
                 console.log('err', err);
                 return res.redirect('/login');
             }
-            if (result.length === 0) {
+            if (result[0].length === 0) {
                 console.log('User not found');
                 return res.redirect('/login');
             }
