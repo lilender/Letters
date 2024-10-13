@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>MyTomillo</title>
+        <link rel="icon"  type="image/png" href="images/Logo.png">
+
+        <!--Bootstrap-->
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!--Style-->
+        <link rel="stylesheet" href="/public/css/Style.css">
+    </head>
+    <body class="background-index container-fluid d-flex align-items-center">
+        <div class="d-flex align-items-center">
+            <div class="col-12 m-0 p-0" style="padding: 0rem;">
+                <div class="row box p-1 m-0 mt-1 mb-0">
+                    <div class="col-4 chat-viewer d-flex align-items-center p-0 m-0">
+                        <div class="nav-bar-container m-0">
+                            <nav class="row d-flex align-items-center flex-column m-0 p-0">
+                                <ul class="d-flex justify-content-between align-items-center m-0 p-0">
+                                    <li style="width: 18%;"><a href="login.html">
+                                        <img src="images/LogoText.png" alt="MyTomillo" style="width: 84%;">
+                                        </a></li>
+                                    <li style="width: 22%;">
+                                        </li>
+                                    <li class="p-1" style="align-self: left; width: 15%;"><a href="#home" style="" onclick="toLogIn()">
+                                        <img src="images/chat2.png" alt="MyTomillo">
+                                        </a></li>
+                                    <li class="p-1" style="align-self: left; width: 15%;"><a href="#home" style="" onclick="toLogIn()">
+                                        <img src="images/tarea2.png" alt="MyTomillo">
+                                        </a></li>
+                                    <li class="p-1" style="align-self: left; width: 15%;"><a href="#home" style="" onclick="toLogIn()">
+                                        <img src="images/tomilloprofile2.png" alt="MyTomillo">
+                                        </a></li>
+                                    <li class="p-1" style="align-self: left; width: 15%;"><a href="#home" style="" onclick="toLogIn()">
+                                        <img src="images/logout2.png" alt="MyTomillo">
+                                        </a></li>
+                                </ul>
+                            </nav>
+                            <div class="row d-flex align-items-center align-items-end flex-column p-0 m-0" style="height: 88.4vh;">
+                                <div class="nav-bar-chats p-3 mb-0">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 group">
+                                            <img src="images/foro.png" alt="Foro FCFM">
+                                        </div>
+                                        <div class="col-10 d-flex flex-column align-items-start justify-content-center">
+                                            <h3>Foro FCFM</h3>
+                                            <p>Pinkus: nigga nigga nigga</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-bar-chats p-3" style="border-bottom: 0rem;">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 group">
+                                            <img src="images/muro.png" alt="Foro FCFM">
+                                        </div>
+                                        <div class="col-10 d-flex align-items-start flex-column">
+                                            <h3>Muro FCFM</h3>
+                                            <p>Pinkus: nigga nigga nigga x2</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-bar-section-line">
+                                </div>
+                                <div class="d-flex bd-highligh p-2">
+                                    <div class="p-2 pb-0 w-100 bd-highlight d-flex align-items-start">
+                                        <h1 style="margin: 0rem;">CHATS</h1>
+                                    </div>
+                                    <div class="p-2 input-group flex-shrink-1 bd-highlight d-flex align-items-center" style="width: auto;">
+                                        <button type="button" class="btn-invisible dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#201C3F" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                                            </svg>
+                                          </button>
+                                          <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#">Nuevo chat privado</a></li>
+                                            <li><a class="dropdown-item" href="#">Nuevo grupo</a></li>
+                                          </ul>
+                                    </div>
+                                </div>
+                                <div class="row search-container p-1 pb-0" style="width: 100%;">
+                                    <form action="index.html" method="get">
+                                        <div class="input-group mb-6">
+                                            <input type="text" placeholder="Buscar publicación..." class="search-bar">
+                                            <button class="btn-normal" type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search p-0 m-0" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="p-0 pb-0 pt-3 m-0" style="">
+                                    <div class="nav-bar-chat-container nav-pills d-flex flex-column align-items-center">
+                                        <div class="nav-bar-chats row d-flex align-items-center p-1">
+                                            <div class="col-2">
+                                                <span class="profile-image">
+                                                    <img src="images/tomilloprofile.png" alt="MyProfile" class="nav-profile-image">
+                                                </span>
+                                            </div>
+                                            <div class="col-10 d-flex align-items-start flex-column">
+                                                <h3>Marla Judith Estrada Valdez</h3>
+                                                <p>Dile a Heber que no</p>
+                                            </div>
+                                        </div>
+                                        <div class="row nav-bar-chats d-flex align-items-center p-1">
+                                            <div class="col-2">
+                                                <span class="profile-image">
+                                                    <img src="images/tomilloprofile.png" alt="MyProfile" class="nav-profile-image">
+                                                </span>
+                                            </div>
+                                            <div class="col-10 d-flex align-items-start flex-column">
+                                                <h3>Los pollitos de A & R</h3>
+                                                <p>Edgar: joto</p>
+                                            </div>
+                                        </div>
+                                        <div class="row nav-bar-chats d-flex align-items-center p-1">
+                                            <div class="col-2">
+                                                <span class="profile-image">
+                                                    <img src="images/tomilloprofile.png" alt="MyProfile" class="nav-profile-image">
+                                                </span>
+                                            </div>
+                                            <div class="col-10 d-flex align-items-start flex-column">
+                                                <h3>Ximena Guadalupe Kiwi alias lupita</h3>
+                                                <p>Edgar es joto</p>
+                                            </div>
+                                        </div>
+                                        <div class="row nav-bar-chats d-flex align-items-center p-1">
+                                            <div class="col-2">
+                                                <span class="profile-image">
+                                                    <img src="images/tomilloprofile.png" alt="MyProfile" class="nav-profile-image">
+                                                </span>
+                                            </div>
+                                            <div class="col-10 d-flex align-items-start flex-column">
+                                                <h3>Heber Abiel Perez Jimenez</h3>
+                                                <p>JAJAJAJAAJ skibidi</p>
+                                            </div>
+                                        </div>
+                                        <div class="row nav-link nav-bar-chats d-flex align-items-center p-1">
+                                            <div class="col-2">
+                                                <span class="profile-image">
+                                                    <img src="images/tomilloprofile.png" alt="MyProfile" class="nav-profile-image">
+                                                </span>
+                                            </div>
+                                            <div class="col-10 d-flex align-items-start flex-column">
+                                                <h3>Heber Abiel Perez Jimenez</h3>
+                                                <p>JAJAJAJAAJ skibidaaai</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-bar-footer mt-auto p-2">
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 m-0" style="padding:0rem">
+                        <div class="profile-info d-flex align-items-center" onclick="toSignIn()">
+                            <div class="col-container">
+                                <span class="profile-info-image m-1">
+                                    <img src="images/tomilloprofile.png" alt="MyProfile">
+                                </span>
+                            </div>
+                            <div class="col-container d-flex align-items-start flex-column">
+                                <h3>Heber Abiel Perez Jimenez</h3>
+                                <p>En línea</p>
+                            </div>
+                        </div>
+                        <div class="row chat d-flex flex-column">
+                            <div class="nav-bar-chat-container">
+                                <div class="row">
+                                    <div class="col-7 d-flex justify-content-start p-4 pt-2 pb-0">
+                                        <div class="messages p-2">
+                                            <p>moka chan ga oshiete kureta ironna mita meni narera puninan ndatte dore dore</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>ok</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-container d-flex justify-content-center p-0 pt-2">
+                                        <div class="date p-5 pt-0 pb-0">
+                                            <p>Hoy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex justify-content-start p-4 pt-2 pb-0">
+                                        <div class="messages p-2">
+                                            <p>Entonces no podemos poner un avión de combate?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>Marla dice que no</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>so no</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex justify-content-start p-4 pt-2 pb-0">
+                                        <div class="messages p-2">
+                                            <p>:c</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex justify-content-start p-4 pt-2 pb-0">
+                                        <div class="messages p-2">
+                                            <p>un tanque?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>nop</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex justify-content-start p-4 pt-2 pb-0">
+                                        <div class="messages p-2">
+                                            <p>una hombie?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>tampoco</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex justify-content-start p-4 pt-2 pb-0">
+                                        <div class="messages p-2">
+                                            <p>aunque sea una glock?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>nada de armas :D</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>somos family friendly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>y tenemos ovejas uwu</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex justify-content-start p-4 pt-2 pb-0">
+                                        <div class="messages p-2">
+                                            <p>... podemos vestir a tomillo como soldado?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex flex-row-reverse">
+                                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                                        <div class="user-messages p-2">
+                                            <p>pregúntale a marla :p</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 p-0">
+                                <div class="message-container p-2 m-1">
+                                    <form action="index.html" method="get">
+                                        <div class="input-group mb-6 m-2">
+                                            <div class="btn-group dropup">
+                                                <button type="button" class="btn-add" data-bs-toggle="dropdown" aria-expanded="false">
+                                                  <img src="images/Add.png" alt="Add" class="add-image">
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                  <li><a class="dropdown-item d-flex align-items-center padding-end-2 padding-start-0" href="#">
+                                                    <img src="images/camara-fotografica.png" alt="+" width="23" class="mx-2 margin-start-0">
+                                                    Fotos y videos</a></li>
+                                                  <li><a class="dropdown-item d-flex align-items-center padding-end-2 padding-start-0" href="#">
+                                                    <img src="images/doc.png" alt="+" width="25" class="mx-2 margin-start-0">
+                                                    Documentos</a></li>
+                                                </ul>
+                                            </div>
+                                            <input type="text" placeholder="Escribe un mensaje..." class="search-bar" aria-label="Text input with dropdown button">
+                                            <button class="btn-normal" type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                                                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
+                                                    </svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="js/JS.js"></script>
+</html>
+
+
+

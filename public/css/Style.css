@@ -3,6 +3,46 @@
 @import url('https://fonts.googleapis.com/css?family=Mansalva');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+/**/
+.confirm-button-class {
+  background-color: rgb(93, 168, 78);
+  color: rgb(255, 255, 255);
+  border: 0rem;
+  outline: 0rem;
+  font-family: "Krona One", sans-serif;
+  font-size: small;
+  border-radius: 0.5rem;
+  transition: .15s ease;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  appearance: none;
+  box-shadow: none;
+      &:hover{
+          background-color: rgba(0, 0, 0, 0);
+          border: 0.1rem solid rgb(93, 168, 78);
+          outline: none;
+          color: rgb(93, 168, 78);
+          font-size: 1rem;
+      }
+      &:focus{
+          outline: none;
+          font-size: 0.9rem;
+          border: 0.1rem solid rgb(255, 255, 255);
+      }
+}
+
+.text-class{
+  font-family: 'Chelsea Market', sans-serif;
+  font-size: 1.2rem;
+  padding: 1rem;
+  color: #fff;
+  font-weight: 100;
+}
+
+.icons{
+  font-family: 'Chelsea Market', sans-serif;
+  color: #0C1F50;
+}
+
 * {
     font-family: 'Chelsea Market', sans-serif;
     color: #fff;
@@ -18,7 +58,6 @@
     background-position: center;
     background-attachment: fixed;
 }
-
 
 .background-index{
   background-size: cover;
@@ -199,6 +238,8 @@ nav ul li:hover{
   outline: none;
 }
 
+
+
 .nav-bar-chats{
   background: #ffffff00;
   border-bottom: 0.1rem solid #201c3f8d;
@@ -207,6 +248,7 @@ nav ul li:hover{
   &:hover{
     background-color: #6a9bc5;
   }
+
   h3{
     color: #100C50;
     font-size: 1.2rem;
@@ -219,7 +261,17 @@ nav ul li:hover{
     display: inline-block;
     margin: 0.1rem;
   }
+  .group{
+    img{
+      width: 70%;
+    }
+  }
 }
+
+.nav-bar-chats.selected {
+  background-color: #6a9bc5;
+}
+
 
 /*Cosos de la conversación*/
 .profile-info{
@@ -388,13 +440,13 @@ nav ul li:hover{
   border: 0.25rem solid #157b3c;
   display: inline-block;
   text-align: center;
-}
-
-.profile-info-image img{
-  max-height: 100%;
-  max-width: 100%;
-  border-radius: 50%;
-  vertical-align: middle;
+  align-content: center;
+  img{
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
 }
 
 
@@ -419,13 +471,12 @@ nav ul li:hover{
   margin: 0rem;
   display: inline-block;
   text-align: center;
-}
-
-.profile-image img{
-  max-height: 100%;
-  max-width: 100%;
-  border-radius: 50%;
-  vertical-align: middle;
+  img{
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
 }
 
 
@@ -458,7 +509,7 @@ nav ul li:hover{
 }
 
 .label-file{
-    background-image: url('images/upload.png'); 
+    background-image: url('/public/images/upload.png'); 
     background-size: cover; 
     background-repeat: no-repeat; 
     background-size: 25%; 
@@ -531,7 +582,7 @@ h2{
     margin-top: -2rem;
 }
 
-input{
+.inputs{
     border: 0rem;
     border-bottom: 0.15rem solid white;
     border-radius: 1rem;
@@ -543,14 +594,32 @@ input{
     outline: none;
     width: 100%;
     height: 2.3rem;
-    transition: all 200ms;
+    &:focus{
+      border-bottom: 0.1rem solid white;
+      outline: none;
+      background: #201c3f3b;
+    }
 }
-
-input:focus{
-    border-bottom: 0.1rem solid white;
+.dropdown{
+  button{
+    border: 0rem;
+    border-bottom: 0.15rem solid white;
+    border-radius: 1rem;
+    background: #201C3F;
+    color: #ffffff;
+    border-color: #ffffff;
+    font-size: small;
+    text-align: center;
     outline: none;
-    background: #201c3f3b;
+    width: 100%;
+    height: 2.3rem;
+    &:focus{
+      border-bottom: 0.1rem solid white;
+      outline: none;
+      background: #201c3f3b;
+    }
   }
+}
 
 .input-signin{
   border: 0rem;
@@ -580,6 +649,7 @@ input:focus{
   }
 
   .btn{
+    appearance: none;
     position: relative;
     color: #ffffff;
     background: rgb(109,152,115);
@@ -590,16 +660,34 @@ input:focus{
     transition: all 200ms;
     box-shadow: 0.3rem 0.3rem 0.5rem 0.05rem #0010054b;
     cursor: pointer;
-  }
-
-  .btn:hover{
-    font-size: 1.1rem;
-    width: 100%;
+    &:hover{
+      font-size: 1.1rem;
+      width: 100%;
+    }
   }
 
   /*Barra de búsqueda stuff*/
   input[class="search-bar"]::-webkit-input-placeholder{
     text-align: left;
+  }
+
+  .search-bar{
+    border: 0rem;
+    border-bottom: 0.15rem solid white;
+    border-radius: 1rem;
+    background: #201C3F;
+    color: #ffffff;
+    border-color: #ffffff;
+    font-size: small;
+    text-align: left;
+    outline: none;
+    width: 100%;
+    height: 2.3rem;
+    &:focus, &:hover{
+      border-bottom: 0.1rem solid white;
+      outline: none;
+      background: #201c3f3b;
+    }
   }
 
   .btn-normal{
@@ -638,32 +726,3 @@ input:focus{
     50%   {transform: translatey(-20px)}
     100%   {transform: translatey(0px);}
   }
-
-/*Marla screen: 1434x856*/
-@media screen and (1434px <= width <=1437px) {
-  .nav-bar-container{
-    height: 64.7rem; 
-  }
-  .nav-bar-chat-container{
-    height: 35rem;
-  }
-  .chat{
-    height: 53rem;
-  }
-  .message-container{
-    input{
-      width: 90%;
-    }
-  }
-  .btn-add{
-    img{
-      left: 37.5rem;
-      bottom: 1.9rem;
-      &:hover{
-        left: 37.4rem;
-        bottom: 1.83rem;
-  
-      }
-    }
-  }
-}
