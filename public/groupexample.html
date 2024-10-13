@@ -12,7 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <!--Style-->
-        <link rel="stylesheet" href="Style.css">
+        <link rel="stylesheet" href="/public/css/Style.css">
     </head>
     <body class="background-index container-fluid d-flex align-items-center">
         <div class="d-flex align-items-center">
@@ -42,9 +42,9 @@
                                 </ul>
                             </nav>
                             <div class="row d-flex align-items-center align-items-end flex-column p-0 m-0" style="height: 88.4vh;">
-                                <div class="nav-bar-groups p-3 mb-0">
+                                <div class="nav-bar-chats p-3 mb-0">
                                     <div class="row d-flex align-items-center">
-                                        <div class="col-2">
+                                        <div class="col-2 group">
                                             <img src="images/foro.png" alt="Foro FCFM">
                                         </div>
                                         <div class="col-10 d-flex flex-column align-items-start justify-content-center">
@@ -53,9 +53,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="nav-bar-groups p-3" style="border-bottom: 0rem;">
+                                <div class="nav-bar-chats p-3" style="border-bottom: 0rem;">
                                     <div class="row d-flex align-items-center">
-                                        <div class="col-2">
+                                        <div class="col-2 group">
                                             <img src="images/muro.png" alt="Foro FCFM">
                                         </div>
                                         <div class="col-10 d-flex align-items-start flex-column">
@@ -95,8 +95,8 @@
                                     </form>
                                 </div>
                                 <div class="p-0 pb-0 pt-3 m-0" style="">
-                                    <div class="nav-bar-chat-container d-flex flex-column align-items-center">
-                                        <div class="row nav-bar-chats d-flex align-items-center p-1">
+                                    <div class="nav-bar-chat-container nav-pills d-flex flex-column align-items-center">
+                                        <div class="nav-bar-chats row d-flex align-items-center p-1">
                                             <div class="col-2">
                                                 <span class="profile-image">
                                                     <img src="images/tomilloprofile.png" alt="MyProfile" class="nav-profile-image">
@@ -140,7 +140,7 @@
                                                 <p>JAJAJAJAAJ skibidi</p>
                                             </div>
                                         </div>
-                                        <div class="row nav-bar-chats d-flex align-items-center p-1">
+                                        <div class="row nav-link nav-bar-chats d-flex align-items-center p-1">
                                             <div class="col-2">
                                                 <span class="profile-image">
                                                     <img src="images/tomilloprofile.png" alt="MyProfile" class="nav-profile-image">
@@ -148,10 +148,9 @@
                                             </div>
                                             <div class="col-10 d-flex align-items-start flex-column">
                                                 <h3>Heber Abiel Perez Jimenez</h3>
-                                                <p>JAJAJAJAAJ skibidi</p>
+                                                <p>JAJAJAJAAJ skibidaaai</p>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
                                 <div class="nav-bar-footer mt-auto p-2">
@@ -164,12 +163,12 @@
                         <div class="profile-info d-flex align-items-center" onclick="toSignIn()">
                             <div class="col-container">
                                 <span class="profile-info-image m-1">
-                                    <img src="images/tomilloprofile.png" alt="MyProfile">
+                                    <img src="images/tomillosgroup.png" alt="MyProfile">
                                 </span>
                             </div>
                             <div class="col-container d-flex align-items-start flex-column">
-                                <h3>Heber Abiel Perez Jimenez</h3>
-                                <p>En línea</p>
+                                <h3>Los pollitos de A & R</h3>
+                                <p>Has click aquí para ver tareas y archivos</p>
                             </div>
                         </div>
                         <div class="row chat d-flex flex-column">
@@ -305,11 +304,11 @@
                                                   <img src="images/Add.png" alt="Add" class="add-image">
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">
-                                                    <img src="images/camara-fotografica 1.png" alt="+">
+                                                  <li><a class="dropdown-item d-flex align-items-center padding-end-2 padding-start-0" href="#">
+                                                    <img src="images/camara-fotografica.png" alt="+" width="23" class="mx-2 margin-start-0">
                                                     Fotos y videos</a></li>
-                                                  <li><a class="dropdown-item" href="#">
-                                                    <img src="images/camara-fotografica 1.png" alt="+">
+                                                  <li><a class="dropdown-item d-flex align-items-center padding-end-2 padding-start-0" href="#">
+                                                    <img src="images/doc.png" alt="+" width="25" class="mx-2 margin-start-0">
                                                     Documentos</a></li>
                                                 </ul>
                                             </div>
@@ -329,5 +328,8 @@
             </div>
         </div>
     </body>
+    <script src="js/JS.js"></script>
 </html>
+
+
 

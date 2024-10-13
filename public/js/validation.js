@@ -71,14 +71,15 @@ function register() {
     Swal.fire({
         title: "Registro exitoso",
         color: '#86bd7b',
-        background: '#11041F',
+        background: '#679CB1',
         confirmButtonOutline: 'none',
         confirmButtonText: "Aceptar",
+        iconColor: '#0C1F50',
         icon: "success",
         customClass: {
-            confirmButton: 'confirm-button-class',
-            title: 'title-class',
-            icon: 'icon-class'
+            confirmButton: 'btn p-1 px-5 w-200',
+            title: 'text-class mt-3',
+            icon: 'icons'
         }
     }).then((result) => {
         if (result.isConfirmed) {
@@ -91,14 +92,15 @@ function register() {
 function alertCustom(title){
     Swal.fire({
         title: title,
-        color: '#86bd7b',
-        background: '#11041F',
+        background: '#679CB1',
         confirmButtonOutline: 'none',
         confirmButtonText: "Aceptar",
+        iconColor: '#0C1F50',
+        icon: "info",
         customClass: {
-          confirmButton: 'confirm-button-class',
-          title: 'title-class',
-          icon: 'icon-class'
+          confirmButton: 'btn p-1 px-5 w-200',
+          title: 'text-class mt-3',
+          icon: 'icons'
         },
         });
 }
