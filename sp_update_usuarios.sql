@@ -38,7 +38,7 @@ BEGIN
         
         SET @ID_usuario_var = (SELECT u.ID_usuario FROM usuarios u WHERE u.correo = correo);
         
-        SELECT @ID_usuario_var;
+        SELECT (SELECT contrasena_hash FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) = SHA2(contrasena_hash, 256);
 
 		IF (SELECT contrasena_hash FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) = SHA2(contrasena_hash, 256) THEN
 			SELECT * from usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var);
