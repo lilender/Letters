@@ -20,7 +20,7 @@ const UserController = {
             req.body['selectedCareerId'], (err, result) => {
                 if (err) {
                     console.log('err', err);
-                    return res.redirect('/register');
+                    return res.redirect('/signin');
                 }
                 res.redirect('/login');
             }
