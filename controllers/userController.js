@@ -9,6 +9,8 @@ const UserController = {
         });
     },
     register: (req, res) => {
+        console.log('req.body', req.body);
+        
         /*const { username, password } = req.body;
         bcrypt.hash(password, 10, (err, hash) => {
             UsuarioModel.createUser(username, hash, (err, result) => {
