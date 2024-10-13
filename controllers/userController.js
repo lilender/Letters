@@ -5,25 +5,17 @@ const UserController = {
     login: (req, res) => {
         UsuarioModel.login(req.body['email'], req.body['password'], (err, result) => {
             console.log('result', result);
+            console.log('err', err);
             if (err) {
-                console.log('Database error:', err);
+                console.log('err', err);
                 return res.redirect('/login');
             }
-        
-            if (!result || !result[0] || result[0].length === 0) {
-                console.log('User not found or password incorrect');
+            if (result[0][0][0] == 'Error') {
+                console.log('User not found');
                 return res.redirect('/login');
             }
-
-            const user = result[0][0];
-        
-            if (!user) {
-                console.log('User not found or password incorrect');
-                return res.redirect('/login');
-            }
-        
-            console.log('User authenticated:', user);
-            req.session.user = user;
+            //const user = result[0];
+            //req.session.user = user;
             res.redirect('/main');
         }
         );
