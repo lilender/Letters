@@ -59,9 +59,8 @@ BEGIN
 					WHERE u.ID_usuario = (SELECT @ID_usuario_var);
 				END IF;
 			END IF;
+            SELECT * from usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var);
         END IF;
-
-        SELECT * from usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var);
 
     END IF;
     IF opcion = 'salida' THEN
