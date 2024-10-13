@@ -10,7 +10,21 @@ const UserController = {
                 console.log('err', err);
                 return res.redirect('/login');
             }
-            if (result[0][0][0] == 'Error') {
+            /* result [
+  [ RowDataPacket { mensaje: 'Error' } ],
+  OkPacket {
+    fieldCount: 0,
+    affectedRows: 0,
+    insertId: 0,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0
+  }
+]*/
+            result = JSON.parse(JSON.stringify(result));
+            if (result[0][0].mensaje === 'Error') {
                 console.log('User not found');
                 return res.redirect('/login');
             }
