@@ -62,6 +62,7 @@ BEGIN
         END IF;
 
         SELECT * FROM usuarios WHERE ID_usuario = @ID_usuario_var;
+        SELECT 1 AS 'existe';
 
     END IF;
     IF opcion = 'salida' THEN
