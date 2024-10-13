@@ -38,16 +38,16 @@ BEGIN
         
         SET @ID_usuario_var = (SELECT u.ID_usuario FROM usuarios u WHERE u.correo = correo);
         
-		IF (SELECT contrasena_hash FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) = SHA2(contrasena_hash, 256) THEN
+		IF (SELECT u.contrasena_hash FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) = SHA2(contrasena_hash, 256) THEN
 			SELECT 'Exito' AS mensaje;
-            IF (SELECT f_ultimo_acceso FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) <= NOW() - INTERVAL 2 DAY THEN
+            IF (SELECT u.f_ultimo_acceso FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) <= NOW() - INTERVAL 2 DAY THEN
 				UPDATE usuarios u
 				SET u.estatus = true,
 					u.racha = 0,
                     u.f_ultimo_acceso = NOW()
 				WHERE u.ID_usuario = (SELECT @ID_usuario_var);
 			ELSE
-				IF (SELECT f_ultimo_acceso FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) <= NOW() - INTERVAL 1 DAY THEN
+				IF (SELECT u.f_ultimo_acceso FROM usuarios u WHERE u.ID_usuario = (SELECT @ID_usuario_var)) <= NOW() - INTERVAL 1 DAY THEN
 					UPDATE usuarios u
 					SET u.estatus = true,
 						u.racha = u.racha + 1,
