@@ -10,14 +10,21 @@ const UserController = {
     },
     register: (req, res) => {
         console.log('req.body', req.body);
-        
-        /*const { username, password } = req.body;
-        bcrypt.hash(password, 10, (err, hash) => {
-            UsuarioModel.createUser(username, hash, (err, result) => {
+        UsuarioModel.createUser(
+            req.body['name'], 
+            req.body['lastname'], 
+            req.body['secondlastname'], 
+            req.body['email'], 
+            req.body['password'][0], 
+            req.body['datePicker'], 
+            req.body['selectedCareerId'], (err, result) => {
+                if (err) {
+                    console.log('err', err);
+                    return res.redirect('/register');
+                }
                 res.redirect('/login');
-            });
-        });*/
-        console.log('register');
+            }
+        );
     }
 };
 
