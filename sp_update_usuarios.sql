@@ -60,8 +60,6 @@ BEGIN
 					WHERE u.ID_usuario = (SELECT @ID_usuario_var);
 				END IF;
 			END IF;
-        ELSE
-            SELECT 'Contraseña incorrecta' AS mensaje;
         END IF;
 
     END IF;
