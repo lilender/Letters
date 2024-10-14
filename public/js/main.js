@@ -1,5 +1,3 @@
-const { get } = require("../../models/CarreraModel");
-
 $(document).ready(() => {
     const socket = io();
 
