@@ -1,6 +1,31 @@
-const socket = io();
-
 $(document).ready(() => {
+    class Usuario {
+        constructor(){
+            this.ID_usuario = 0;
+            this.correo = '';
+            this.nombres = '';
+            this.apellido_paterno = '';
+            this.apellido_materno = '';
+            this.f_nacimiento = '';
+            this.f_registro = '';
+            this.ID_carrera = 0;
+            this.XP = 0;
+            this.racha = 0;
+        }
+        make(ID_usuario, correo, nombres, apellido_paterno, apellido_materno, f_nacimiento, f_registro, ID_carrera, XP, racha){
+            this.ID_usuario = ID_usuario;
+            this.correo = correo;
+            this.nombres = nombres;
+            this.apellido_paterno = apellido_paterno;
+            this.apellido_materno = apellido_materno;
+            this.f_nacimiento = f_nacimiento;
+            this.f_registro = f_registro;
+            this.ID_carrera = ID_carrera;
+            this.XP = XP;
+            this.racha = racha;
+        }
+    }
+    const usuario = new Usuario();
     fetch('/session')
         .then(response => {
             if (!response.ok) {
@@ -10,6 +35,20 @@ $(document).ready(() => {
         })
         .then(data => {
             console.log('Logged in as:', data.user.correo);
+            const socket = io();
+            socket.emit('register', data.user.ID_usuario);
+            usuario.make(
+                data.user.ID_usuario,
+                data.user.correo,
+                data.user.nombres,
+                data.user.apellido_paterno,
+                data.user.apellido_materno,
+                data.user.f_nacimiento,
+                data.user.f_registro,
+                data.user.ID_carrera,
+                data.user.XP,
+                data.user.racha
+            )
         })
         .catch(error => {
             console.error('Error:', error);
@@ -67,6 +106,7 @@ $(document).ready(() => {
                 chatContainer.append(chatBox);
 
                 chatBox.addEventListener('click', () => {
+                    $("chat_id").val(chat.ID_usuario);
                     $("#current_chat_name").text(chat.nombres + ' ' + chat.apellido_paterno + ' ' + chat.apellido_materno);
                     $("#current_chat_status").text(chat.estatus);
                 });
@@ -74,6 +114,68 @@ $(document).ready(() => {
             });
         })
         .catch(error => console.error('Error fetching chats:', error));
+
+
+        const inputMessage = $("#input_message");
+        const sendBtn = $("#send_btn");
+
+        sendBtn.on('click', () => {
+            const message = inputMessage.val();
+            const recipient = $("#chat_id").val();
+            if (message && recipient) {
+                socket.emit('privateMessage', { recipient, message, sender: usuario.ID_usuario });
+                inputMessage.val('');
+                /**
+                <div class="row d-flex flex-row-reverse">
+                    <div class="col-7 d-flex justify-content-end p-2 pt-2 pb-1">
+                        <div class="user-messages p-2">
+                            <p>pregúntale a marla :p</p>
+                        </div>
+                    </div>
+                </div>
+                */
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('row', 'd-flex', 'flex-row-reverse');
+                const messageBox = document.createElement('div');
+                messageBox.classList.add('col-7', 'd-flex', 'justify-content-end', 'p-2', 'pt-2', 'pb-1');
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('user-messages', 'p-2');
+                const messageText = document.createElement('p');
+                messageText.textContent = message;
+                messageContent.appendChild(messageText);
+                messageBox.appendChild(messageContent);
+                messageElement.appendChild(messageBox);
+
+                $('#message-container').append(messageElement);
+            }
+        });
+
+        // Receive private messages
+        socket.on('privateMessage', (data) => {
+            const { message, sender } = data;
+            /*
+            <div class="row">
+                <div class="col-7 d-flex justify-content-start p-4 pt-2 pb-0">
+                    <div class="messages p-2">
+                        <p>... podemos vestir a tomillo como soldado?</p>
+                    </div>
+                </div>
+            </div>
+            */
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('row');
+            const messageBox = document.createElement('div');
+            messageBox.classList.add('col-7', 'd-flex', 'justify-content-start', 'p-4', 'pt-2', 'pb-0');
+            const messageContent = document.createElement('div');
+            messageContent.classList.add('messages', 'p-2');
+            const messageText = document.createElement('p');
+            messageText.textContent = message;
+            messageContent.appendChild(messageText);
+            messageBox.appendChild(messageContent);
+            messageElement.appendChild(messageBox);
+
+            $('#message-container').append(messageElement);
+        });
 });
 
 

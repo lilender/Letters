@@ -6,10 +6,6 @@ const bodyParser = require('body-parser');
 
 const session = require('express-session'); // Session management
 
-
-
-
-
 // Initialize app and server
 const app = express();
 const server = http.createServer(app);
@@ -72,18 +68,35 @@ app.post('/register', userController.register);
 app.post('/login', userController.login);
 
 
+const users = {};
 
-// WebSocket for real-time chat
 io.on('connection', (socket) => {
-    console.log('New user connected');
-    
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
+    console.log('New user connected:', socket.id);
+
+    socket.on('register', (user_id) => {
+        users[user_id] = socket.id;
+        console.log(`${user_id} registered with socket ID ${socket.id}`);
     });
 
-    socket.on('chatMessage', (user, msg) => {
-        // Broadcast message to all users
-        io.emit('chatMessage', user, msg);
+    socket.on('privateMessage', (data) => {
+        const { recipient, message, sender } = data;
+        const recipientSocketId = users[recipient];
+
+        if (recipientSocketId) {
+            io.to(recipientSocketId).emit('privateMessage', { message, sender });
+        } else {
+            console.log(`${recipient} is not connected.`);
+        }
+    });
+
+    socket.on('disconnect', () => {
+        console.log(`User disconnected: ${socket.id}`);
+        for (let user_id in users) {
+            if (users[user_id] === socket.id) {
+                delete users[user_id];
+                break;
+            }
+        }
     });
 });
 
