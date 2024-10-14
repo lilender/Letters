@@ -22,8 +22,16 @@ const ChatModel = {
             JOIN usuarios ub ON DMs.ID_usuario_b = ub.ID_usuario
             WHERE DMs.ID_usuario_a = ? OR DMs.ID_usuario_b = ?
         `;
-        db.query(query, [userId, userId], callback);
+        console.log('Fetching DMs for user:', userId); // Debugging line
+        db.query(query, [userId, userId], (err, results) => {
+            if (err) {
+                return callback(err);
+            }
+            console.log('DMs fetched:', results); // Debugging line
+            callback(null, results);
+        });
     },
+    
     
     newDM: (userA, userB, callback) => {
         const query1 = 'INSERT INTO chats () VALUES ()';
@@ -31,13 +39,20 @@ const ChatModel = {
             if (err) {
                 return callback(err);
             }
-
+    
             const chatId = result.insertId;
-
+    
             const query2 = 'INSERT INTO DMs (ID_chat, ID_usuario_a, ID_usuario_b) VALUES (?, ?, ?)';
-            db.query(query2, [chatId, userA, userB], callback);
+            db.query(query2, [chatId, userA, userB], (err2, result2) => {
+                if (err2) {
+                    return callback(err2);
+                }
+                console.log('DM created with ID:', result2.insertId); // Debugging line
+                callback(null, { chatId, userA, userB }); // Return the created chat information
+            });
         });
     },
+    
 
     getUsersFromChat: (chatID, callback) => {
         const query = `
