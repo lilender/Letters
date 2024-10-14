@@ -108,7 +108,7 @@ $(document).ready(() => {
                 chatContainer.append(chatBox);
 
                 chatBox.addEventListener('click', () => {
-                    $("chat_id").val(chat.ID_usuario);
+                    $("#chat_id").val(chat.ID_usuario);
                     $("#current_chat_name").text(chat.nombres + ' ' + chat.apellido_paterno + ' ' + chat.apellido_materno);
                     $("#current_chat_status").text(chat.estatus);
                 });
