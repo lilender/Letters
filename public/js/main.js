@@ -1,3 +1,4 @@
+const { get } = require("../../models/CarreraModel");
 
 $(document).ready(() => {
     const socket = io();
@@ -51,6 +52,7 @@ $(document).ready(() => {
                 data.user.XP,
                 data.user.racha
             )
+            getDMs();
         })
         .catch(error => {
             console.error('Error:', error);
