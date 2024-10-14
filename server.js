@@ -61,8 +61,8 @@ app.get('/logout', (req, res) => {
 app.get('/careers', (req, res) => {
     carreraController.get(req, res);
 });
-app.get('/chats', (req, res) => {
-    chatController.getAllChats(req, res);
+app.get('/DMs', (req, res) => {
+    chatController.getDMs(req, res);
 });
 app.get('/allusers', (req, res) => {
     userController.getAllUsers(req, res);
@@ -83,7 +83,23 @@ io.on('connection', (socket) => {
     });
 
     socket.on('privateMessage', (data) => {
-        const { recipient, message, sender } = data;
+        const { chatID, message, sender } = data;
+        //fectch user ID from chatID
+        chatController.getUsersFromChat(chatID, (err, result) => {
+            if (err) {
+                console.log('Error fetching users:', err);
+                return;
+            }
+            const recipient = result[0].ID_usuario_a === sender ? result[0].ID_usuario_b : result[0].ID_usuario_a;
+            const recipientSocketId = users[recipient];
+
+            if (recipientSocketId) {
+                io.to(recipientSocketId).emit('privateMessage', { message, sender });
+            } else {
+                console.log(`${recipient} is not connected.`);
+            }
+        });
+
         const recipientSocketId = users[recipient];
 
         if (recipientSocketId) {
