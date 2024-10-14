@@ -81,6 +81,9 @@ io.on('connection', (socket) => {
 
             if (recipientSocketId) {
                 io.to(recipientSocketId).emit('privateMessage', { message, sender });
+                console.log(`Message sent to ${recipient}`);
+                console.log(`Message: ${message}`);
+                console.log(`Sender: ${sender}`);
             } else {
                 console.log(`${recipient} is not connected.`);
             }
