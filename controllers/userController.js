@@ -51,6 +51,14 @@ const UserController = {
                 res.redirect('/login');
             }
         );
+    },
+    getActiveUsers: (req, res) => {
+        UsuarioModel.getActiveUsers((err, result) => {
+            if (err) {
+                console.log('err', err);
+            }
+            res.json(result);
+        });
     }
 };
 

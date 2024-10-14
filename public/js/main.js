@@ -10,12 +10,65 @@ $(document).ready(() => {
         })
         .then(data => {
             console.log('Logged in as:', data.user.correo);
-            $('#welcomeMessage').text(`Welcome, ${data.user.correo}`);
         })
         .catch(error => {
             console.error('Error:', error);
             window.location.href = '/login';  // Redirect to login if not authenticated
         });
+
+
+        fetch('/chats')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse JSON data
+        })
+        .then(data => {
+
+            /*<div class="row nav-bar-chats d-flex align-items-center p-1">
+                <div class="col-2">
+                    <span class="profile-image">
+                        <img src="images/tomilloprofile.png" class="nav-profile-image">
+                    </span>
+                </div>
+                <div class="col-10 d-flex align-items-start flex-column">
+                    <h3>Los pollitos de A & R</h3>
+                    <p>Edgar: joto</p>
+                </div>
+            </div>*/
+
+            const chatContainer = $('#chat-container');
+            data.forEach(chat => {
+                const chatBox = document.createElement('div');
+                chatBox.classList.add('row', 'nav-bar-chats', 'd-flex', 'align-items-center', 'p-1');
+
+                const imageSpace = document.createElement('div');
+                imageSpace.classList.add('col-2');
+                const imageBox = document.createElement('span');
+                imageBox.classList.add('profile-image');
+                const img = document.createElement('img');
+                img.src = 'images/tomilloprofile.png';
+                img.classList.add('nav-profile-image');
+                imageBox.appendChild(img);
+                imageSpace.appendChild(imageBox);
+                chatBox.appendChild(imageSpace);
+
+                const chatInfo = document.createElement('div');
+                chatInfo.classList.add('col-10', 'd-flex', 'align-items-start', 'flex-column');
+                const chatTitle = document.createElement('h3');
+                chatTitle.textContent = chat.nombres + ' ' + chat.apellido_paterno + ' ' + chat.apellido_materno;
+                const chatMessage = document.createElement('p');
+                chatMessage.textContent = "`${chat.username}: ${chat.message}`";
+                chatInfo.appendChild(chatTitle);
+                chatInfo.appendChild(chatMessage);
+
+                chatBox.appendChild(chatInfo);
+                chatContainer.append(chatBox);
+                
+            });
+        })
+        .catch(error => console.error('Error fetching chats:', error));
 });
 
 

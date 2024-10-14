@@ -30,6 +30,7 @@ app.use(session({
 
 const userController = require('./controllers/userController');
 const carreraController = require('./controllers/carreraController');
+const UsuarioModel = require('./models/UsuarioModel');
 
 // Redirect the root URL to /login
 app.get('/', (req, res) => {
@@ -63,6 +64,9 @@ app.get('/logout', (req, res) => {
 });
 app.get('/careers', (req, res) => {
     carreraController.get(req, res);
+});
+app.get('/chats', (req, res) => {
+    userController.getActiveUsers(req, res);
 });
 app.post('/register', userController.register);
 app.post('/login', userController.login);

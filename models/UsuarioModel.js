@@ -9,6 +9,14 @@ const UsuarioModel = {
         const query = "CALL sp_update_usuarios('agregar',?,?,?,?,?,?,NULL,NULL,?,NULL);";
         db.query(query, [nombres, apellido_paterno, apellido_materno, correo, contra, f_nacimiento, carrera], callback);
     },
+    getAllUsers: (callback) => {
+        const query = "SELECT nombres, apellido_paterno, apellido_materno FROM usuarios;";
+        db.query(query, callback);
+    },
+    getActiveUsers: (callback) => {
+        const query = "SELECT nombres, apellido_paterno, apellido_materno FROM usuarios WHERE estatus = 1;";
+        db.query(query, callback);
+    }
 };
 
 module.exports = UsuarioModel;
