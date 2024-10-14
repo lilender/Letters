@@ -99,14 +99,6 @@ io.on('connection', (socket) => {
                 console.log(`${recipient} is not connected.`);
             }
         });
-
-        const recipientSocketId = users[recipient];
-
-        if (recipientSocketId) {
-            io.to(recipientSocketId).emit('privateMessage', { message, sender });
-        } else {
-            console.log(`${recipient} is not connected.`);
-        }
     });
 
     socket.on('disconnect', () => {

@@ -90,6 +90,7 @@ $(document).ready(() => {
                     return;
                 }
                 const chatContainer = $('#chat-container');
+                chatContainer.html(''); // Clear chat container
                 data.chats.forEach(chat => {
                     let nombre;
                     let estatus;
