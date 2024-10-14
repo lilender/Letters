@@ -54,19 +54,10 @@ app.get('/session', (req, res) => {
         res.status(401).json({ message: 'Not logged in' });
     }
 });
-app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/login');
-});
-app.get('/careers', (req, res) => {
-    carreraController.get(req, res);
-});
-app.post('/DMs', (req, res) => {
-    chatController.getDMs(req, res);
-});
-app.get('/allusers', (req, res) => {
-    userController.getAllUsers(req, res);
-});
+app.get('/logout', userController.logout);
+app.get('/careers', carreraController.get);
+app.get('/DMs', chatController.getDMs);
+app.get('/allusers', userController.getAllUsers);
 app.post('/register', userController.register);
 app.post('/login', userController.login);
 app.post('/newchat', chatController.newDM);

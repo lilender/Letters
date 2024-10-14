@@ -2,7 +2,7 @@ const ChatModel = require('../models/ChatModel');
 
 const chatController = {
     getDMs: (req, res) => {
-        const userId = req.body.ID_usuario;
+        const userId = req.session.user.ID_usuario;
         ChatModel.getDMs(userId, (err, result) => {
             if (err) {
                 console.log('Error fetching chats:', err);
@@ -28,8 +28,14 @@ const chatController = {
         });
     },
 
-    getUsersFromChat: (chatID, callback) => {
-        ChatModel.getUsersFromChat(chatID, callback);
+    getUsersFromChat: (chatID, ) => {
+        ChatModel.getUsersFromChat(chatID, (err, result) => {
+            if (err) {
+                console.log('Error fetching users:', err);
+                return;
+            }
+            return result;
+        });
     }
 };
 

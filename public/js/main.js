@@ -58,13 +58,7 @@ $(document).ready(() => {
         });
 
         function getDMs() {
-            fetch('/DMs', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ ID_usuario: usuario.ID_usuario }) // Sending user ID in the body
-            })
+            fetch('/DMs')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
