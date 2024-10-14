@@ -1,4 +1,7 @@
+
 $(document).ready(() => {
+    const socket = io();
+
     class Usuario {
         constructor(){
             this.ID_usuario = 0;
@@ -35,7 +38,6 @@ $(document).ready(() => {
         })
         .then(data => {
             console.log('Logged in as:', data.user.correo);
-            const socket = io();
             socket.emit('register', data.user.ID_usuario);
             usuario.make(
                 data.user.ID_usuario,
