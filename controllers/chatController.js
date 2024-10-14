@@ -2,7 +2,8 @@ const ChatModel = require('../models/ChatModel');
 
 const chatController = {
     getDMs: (req, res) => {
-        ChatModel.getDMs(req.body['ID_usuario'], (err, result) => {
+        const userId = req.body.ID_usuario;
+        ChatModel.getDMs(userId, (err, result) => {
             if (err) {
                 console.log('Error fetching chats:', err);
                 return res.status(500).json({ success: false, message: 'Error fetching chats' });

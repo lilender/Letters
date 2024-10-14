@@ -58,12 +58,18 @@ $(document).ready(() => {
         });
 
         function getDMs(){
-            fetch('/DMs')
+            fetch('/DMs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ID_usuario: usuario.ID_usuario }) // Sending user ID in the body
+            })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json(); // Parse JSON data
+                return response.json();
             })
             .then(data => {
 
