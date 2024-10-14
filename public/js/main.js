@@ -57,8 +57,8 @@ $(document).ready(() => {
             window.location.href = '/login';  // Redirect to login if not authenticated
         });
 
-        function getChats(){
-            fetch('/chats')
+        function getDMs(){
+            fetch('/DMs')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -78,9 +78,21 @@ $(document).ready(() => {
                         <p>Edgar: joto</p>
                     </div>
                 </div>*/
-
+                if(data.lenght == 0){
+                    return;
+                }
                 const chatContainer = $('#chat-container');
                 data.forEach(chat => {
+                    let nombre;
+                    let estatus;
+                    if(chat.ID_usuario_a == usuario.ID_usuario){
+                        nombre = chat.usuario_b_nombres + ' ' + chat.usuario_b_apellido_paterno + ' ' + chat.usuario_b_apellido_materno;
+                        estatus = chat.usuario_b_estatus;                        
+                    } else {
+                        nombre = chat.usuario_a_nombres + ' ' + chat.usuario_a_apellido_paterno + ' ' + chat.usuario_a_apellido_materno;
+                        estatus = chat.usuario_a_estatus;
+                    }
+
                     const chatBox = document.createElement('div');
                     chatBox.classList.add('row', 'nav-bar-chats', 'd-flex', 'align-items-center', 'p-1');
 
@@ -98,7 +110,7 @@ $(document).ready(() => {
                     const chatInfo = document.createElement('div');
                     chatInfo.classList.add('col-10', 'd-flex', 'align-items-start', 'flex-column');
                     const chatTitle = document.createElement('h3');
-                    chatTitle.textContent = chat.nombres + ' ' + chat.apellido_paterno + ' ' + chat.apellido_materno;
+                    chatTitle.textContent = nombre;
                     const chatMessage = document.createElement('p');
                     chatMessage.textContent = "`${chat.username}: ${chat.message}`";
                     chatInfo.appendChild(chatTitle);
@@ -108,9 +120,9 @@ $(document).ready(() => {
                     chatContainer.append(chatBox);
 
                     chatBox.addEventListener('click', () => {
-                        $("#chat_id").val(chat.ID_usuario);
-                        $("#current_chat_name").text(chat.nombres + ' ' + chat.apellido_paterno + ' ' + chat.apellido_materno);
-                        $("#current_chat_status").text(chat.estatus);
+                        $("#chat_id").val(chat.ID_chat);
+                        $("#current_chat_name").text(nombre);
+                        $("#current_chat_status").text(estatus);
                     });
                     
                 });
@@ -118,7 +130,7 @@ $(document).ready(() => {
             .catch(error => console.error('Error fetching chats:', error));
         }
 
-        setInterval(getChats, 10000);
+        setInterval(getDMs, 10000);
 
         const inputMessage = $("#input_message");
         const sendBtn = $("#send_btn");
@@ -127,9 +139,9 @@ $(document).ready(() => {
             event.preventDefault();
 
             const message = inputMessage.val();
-            const recipient = $("#chat_id").val();
-            if (message && recipient) {
-                socket.emit('privateMessage', { recipient, message, sender: usuario.ID_usuario });
+            const chatID = $("#chat_id").val();
+            if (message && chatID) {
+                socket.emit('privateMessage', { chatID, message, sender: usuario.ID_usuario });
                 inputMessage.val('');
                 const messageElement = document.createElement('div');
                 messageElement.classList.add('row', 'd-flex', 'flex-row-reverse');
@@ -218,7 +230,7 @@ $(document).ready(() => {
                                         .then(result => {
                                             if (result.success) {
                                                 console.log('Chat created successfully');
-                                                getChats();
+                                                getDMs();
                                             } else {
                                                 console.error('Error creating chat:', result.message);
                                             }
