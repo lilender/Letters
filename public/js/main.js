@@ -78,7 +78,7 @@ $(document).ready(() => {
                         <p>Edgar: joto</p>
                     </div>
                 </div>*/
-                if(data.lenght == 0){
+                if(data.length === 0){
                     return;
                 }
                 const chatContainer = $('#chat-container');
