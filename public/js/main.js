@@ -65,6 +65,11 @@ $(document).ready(() => {
 
                 chatBox.appendChild(chatInfo);
                 chatContainer.append(chatBox);
+
+                chatBox.addEventListener('click', () => {
+                    $("#current_chat_name").textContent = chat.nombres + ' ' + chat.apellido_paterno + ' ' + chat.apellido_materno;
+                    $("#current_chat_status").textContent = chat.estatus;
+                });
                 
             });
         })

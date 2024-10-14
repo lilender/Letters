@@ -52,6 +52,15 @@ const UserController = {
             }
         );
     },
+    getAllUsers: (req, res) => {
+        UsuarioModel.getAllUsers((err, result) => {
+            if (err) {
+                console.log('err', err);
+            }
+            res.json(result);
+        }
+        );
+    },
     getActiveUsers: (req, res) => {
         UsuarioModel.getActiveUsers((err, result) => {
             if (err) {

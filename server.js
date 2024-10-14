@@ -66,7 +66,7 @@ app.get('/careers', (req, res) => {
     carreraController.get(req, res);
 });
 app.get('/chats', (req, res) => {
-    userController.getActiveUsers(req, res);
+    userController.getAllUsers(req, res);
 });
 app.post('/register', userController.register);
 app.post('/login', userController.login);
