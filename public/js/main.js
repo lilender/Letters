@@ -122,6 +122,8 @@ $(document).ready(() => {
         const sendBtn = $("#send_btn");
 
         sendBtn.on('click', () => {
+            event.preventDefault();  // Prevent form submission (and page reload)
+
             const message = inputMessage.val();
             const recipient = $("#chat_id").val();
             if (message && recipient) {
