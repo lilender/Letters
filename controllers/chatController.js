@@ -2,6 +2,7 @@ const ChatModel = require('../models/ChatModel');
 
 const chatController = {
     getDMs: (req, res) => {
+        console.log(req.session.user);
         const userId = req.session.user.ID_usuario;
         ChatModel.getDMs(userId, (err, result) => {
             if (err) {
