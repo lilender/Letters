@@ -69,7 +69,7 @@ app.get('/allusers', (req, res) => {
 });
 app.post('/register', userController.register);
 app.post('/login', userController.login);
-app.post('/newchat', chatController.newChat);
+app.post('/newchat', chatController.newDM);
 
 
 const users = {};
