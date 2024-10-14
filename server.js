@@ -75,10 +75,16 @@ io.on('connection', (socket) => {
 
     socket.on('privateMessage', (data) => {
         const { chatID, message, sender } = data;
+    
         chatController.getUsersFromChat(chatID, (result) => {
+            if (!result || result.length === 0) {
+                console.log('No users found for this chat.');
+                return;
+            }
+    
             const recipient = result[0].ID_usuario_a === sender ? result[0].ID_usuario_b : result[0].ID_usuario_a;
             const recipientSocketId = users[recipient];
-
+    
             if (recipientSocketId) {
                 io.to(recipientSocketId).emit('privateMessage', { message, sender });
                 console.log(`Message sent to ${recipient}`);
@@ -87,9 +93,9 @@ io.on('connection', (socket) => {
             } else {
                 console.log(`${recipient} is not connected.`);
             }
-        }
-        );
+        });
     });
+    
 
     socket.on('disconnect', () => {
         console.log(`User disconnected: ${socket.id}`);

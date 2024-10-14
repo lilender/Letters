@@ -29,15 +29,16 @@ const chatController = {
         });
     },
 
-    getUsersFromChat: (chatID, ) => {
+    getUsersFromChat: (chatID, callback) => {
         ChatModel.getUsersFromChat(chatID, (err, result) => {
             if (err) {
                 console.log('Error fetching users:', err);
-                return;
+                return callback(null); // Handle error case
             }
-            return result;
+            callback(result); // Call the callback with the result
         });
     }
+    
 };
 
 
