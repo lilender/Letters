@@ -1,6 +1,26 @@
 const socket = io();
 
-document.getElementById('register-form').addEventListener('submit', (e) => {
+$(document).ready(() => {
+    fetch('/session')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('User not logged in');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Logged in as:', data.user.correo);
+            $('#welcomeMessage').text(`Welcome, ${data.user.correo}`);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            window.location.href = '/login';  // Redirect to login if not authenticated
+        });
+});
+
+
+
+/*document.getElementById('register-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const username = document.getElementById('reg-username').value;
     const password = document.getElementById('reg-password').value;
@@ -66,3 +86,4 @@ socket.on('chatMessage', (user, msg) => {
     msgDiv.textContent = `${user}: ${msg}`;
     chatBox.appendChild(msgDiv);
 });
+*/

@@ -16,8 +16,20 @@ const UserController = {
                 console.log('User not found');
                 return res.redirect('/login');
             }
-            const user = result[0][0];
-            req.session.user = user;
+
+            req.session.user = {
+                ID_usuario: result[0][0].ID_usuario,
+                correo: result[0][0].correo,
+                nombres: result[0][0].nombres,
+                apellido_paterno: result[0][0].apellido_paterno,
+                apellido_materno: result[0][0].apellido_materno,
+                f_nacimiento: result[0][0].f_nacimiento,
+                f_registro: result[0][0].f_registro,
+                ID_carrera: result[0][0].ID_carrera,
+                XP: result[0][0].XP,
+                racha: result[0][0].racha
+            };
+            
             res.redirect('/main');
         }
         );

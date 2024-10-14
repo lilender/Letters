@@ -4,6 +4,12 @@ const socketIo = require('socket.io');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const session = require('express-session'); // Session management
+
+
+
+
+
 // Initialize app and server
 const app = express();
 const server = http.createServer(app);
@@ -13,6 +19,14 @@ const io = socketIo(server);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Session middleware
+app.use(session({
+    secret: 'no-entiendo-nada-de-esto-banana-perro-calceta-orangutan-terremoto-calculointegral',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }  // Set secure: true if using HTTPS
+}));
 
 const userController = require('./controllers/userController');
 const carreraController = require('./controllers/carreraController');
@@ -30,7 +44,22 @@ app.get('/signin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signin.html'));
 });
 app.get('/main', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'main.html'));
+    if (req.session.user) {
+        res.sendFile(path.join(__dirname, 'public', 'main.html'));
+    } else {
+        res.redirect('/login');
+    }
+});
+app.get('/session', (req, res) => {
+    if (req.session.user) {
+        res.json({ user: req.session.user });
+    } else {
+        res.status(401).json({ message: 'Not logged in' });
+    }
+});
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/login');
 });
 app.get('/careers', (req, res) => {
     carreraController.get(req, res);
