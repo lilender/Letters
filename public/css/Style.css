@@ -309,16 +309,25 @@ nav ul li:hover{
   text-align: start;
   border-radius: 0.5rem;
   border-top-left-radius: 0rem;
-}
+  p{
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0rem;
+    -webkit-text-stroke: 0.02rem rgb(255, 255, 255);
+  }
 
-.messages p{
-  color: #ffffff;
-  font-family: Montserrat;
-  font-size: 1.1rem;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0rem;
-  -webkit-text-stroke: 0.02rem rgb(255, 255, 255);
+  .group-user{
+    color: #0c5c4d;
+    font-family: Montserrat;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0rem;
+    -webkit-text-stroke: 0.09rem #0c5c4d;
+  }
 }
 
 .user-messages{
@@ -431,7 +440,7 @@ nav ul li:hover{
     }
 }
 
-/*Foto de perfil no chats :p*/
+/*Foto de perfil no chats :p :ppppppp*/
 .profile-info-image{
   width: 5rem;
   height: 5rem;
@@ -447,6 +456,10 @@ nav ul li:hover{
     border-radius: 50%;
     vertical-align: middle;
   }
+}
+/*Offline, default*/
+.profile-info-image.selected{
+  border: 0.25rem solid #06082c;
 }
 
 
