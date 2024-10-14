@@ -78,7 +78,9 @@ $(document).ready(() => {
                         <p>Edgar: joto</p>
                     </div>
                 </div>*/
-                if(data.length === 0){
+                console.log('Fetched data:', data); // Log the data here
+                if (!Array.isArray(data) || data.length === 0) { // Check if data is an array
+                    console.log('No chats found or data is not an array');
                     return;
                 }
                 const chatContainer = $('#chat-container');
