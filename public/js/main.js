@@ -85,12 +85,12 @@ $(document).ready(() => {
                     </div>
                 </div>*/
                 console.log('Fetched data:', data); // Log the data here
-                if (!Array.isArray(data) || data.length === 0) { // Check if data is an array
+                if (!data.success || !data.chats.length) {
                     console.log('No chats found or data is not an array');
                     return;
                 }
                 const chatContainer = $('#chat-container');
-                data.forEach(chat => {
+                data.chats.forEach(chat => {
                     let nombre;
                     let estatus;
                     if(chat.ID_usuario_a == usuario.ID_usuario){
