@@ -75,12 +75,7 @@ io.on('connection', (socket) => {
 
     socket.on('privateMessage', (data) => {
         const { chatID, message, sender } = data;
-        //fectch user ID from chatID
-        chatController.getUsersFromChat(chatID, (err, result) => {
-            if (err) {
-                console.log('Error fetching users:', err);
-                return;
-            }
+        chatController.getUsersFromChat(chatID, (result) => {
             const recipient = result[0].ID_usuario_a === sender ? result[0].ID_usuario_b : result[0].ID_usuario_a;
             const recipientSocketId = users[recipient];
 
@@ -89,7 +84,8 @@ io.on('connection', (socket) => {
             } else {
                 console.log(`${recipient} is not connected.`);
             }
-        });
+        }
+        );
     });
 
     socket.on('disconnect', () => {
