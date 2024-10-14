@@ -57,7 +57,7 @@ $(document).ready(() => {
             window.location.href = '/login';  // Redirect to login if not authenticated
         });
 
-        function getDMs(){
+        function getDMs() {
             fetch('/DMs', {
                 method: 'POST',
                 headers: {
@@ -69,7 +69,7 @@ $(document).ready(() => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json();
+                return response.json(); // Parse JSON data
             })
             .then(data => {
 

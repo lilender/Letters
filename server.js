@@ -61,7 +61,7 @@ app.get('/logout', (req, res) => {
 app.get('/careers', (req, res) => {
     carreraController.get(req, res);
 });
-app.get('/DMs', (req, res) => {
+app.post('/DMs', (req, res) => {
     chatController.getDMs(req, res);
 });
 app.get('/allusers', (req, res) => {

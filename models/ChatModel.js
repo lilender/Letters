@@ -22,15 +22,9 @@ const ChatModel = {
             JOIN usuarios ub ON DMs.ID_usuario_b = ub.ID_usuario
             WHERE DMs.ID_usuario_a = ? OR DMs.ID_usuario_b = ?
         `;
-        console.log('Fetching DMs for user:', userId); // Debugging line
-        db.query(query, [userId, userId], (err, results) => {
-            if (err) {
-                return callback(err);
-            }
-            console.log('DMs fetched:', results); // Debugging line
-            callback(null, results);
-        });
+        db.query(query, [userId, userId], callback);
     },
+    
     
     
     newDM: (userA, userB, callback) => {
