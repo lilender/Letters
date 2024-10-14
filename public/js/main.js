@@ -202,8 +202,8 @@ $(document).ready(() => {
                     Swal.fire({
                         title: 'Search for a user',
                         html: `
-                            <input type="text" id="searchUser" class="swal2-input" placeholder="Type a name">
-                            <ul id="userList" class="swal2-list"></ul>
+                            <input type="text" id="searchUser" placeholder="Type a name">
+                            <ul id="userList"></ul>
                         `,
                         didOpen: () => {
                             const searchUser = document.getElementById('searchUser');
@@ -219,7 +219,7 @@ $(document).ready(() => {
                                     const listItem = document.createElement('li');
                                     listItem.textContent = user.name;
                                     listItem.setAttribute('data-id', user.id);
-                                    listItem.classList.add('swal2-list-item');
+                                    listItem.style.color = 'blue';
                                     userList.appendChild(listItem);
         
                                     listItem.addEventListener('click', () => {
