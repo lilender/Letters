@@ -51,7 +51,7 @@ $(document).ready(() => {
                 data.user.ID_carrera,
                 data.user.XP,
                 data.user.racha
-            )
+            );
             getDMs();
         })
         .catch(error => {
