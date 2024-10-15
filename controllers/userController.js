@@ -52,6 +52,15 @@ const UserController = {
             }
         );
     },
+    logout: (req, res) => {
+        UsuarioModel.logout(req.session.user.ID_usuario, (err, result) => {
+            if (err) {
+                console.log('err', err);
+            }
+            req.session.destroy();
+            res.redirect('/login');
+        });
+    },
     getAllUsers: (req, res) => {
         UsuarioModel.getAllUsers((err, result) => {
             if (err) {

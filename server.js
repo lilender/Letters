@@ -6,10 +6,6 @@ const bodyParser = require('body-parser');
 
 const session = require('express-session'); // Session management
 
-
-
-
-
 // Initialize app and server
 const app = express();
 const server = http.createServer(app);
@@ -30,7 +26,7 @@ app.use(session({
 
 const userController = require('./controllers/userController');
 const carreraController = require('./controllers/carreraController');
-const UsuarioModel = require('./models/UsuarioModel');
+const chatController = require('./controllers/chatController');
 
 // Redirect the root URL to /login
 app.get('/', (req, res) => {
@@ -58,32 +54,57 @@ app.get('/session', (req, res) => {
         res.status(401).json({ message: 'Not logged in' });
     }
 });
-app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/login');
-});
-app.get('/careers', (req, res) => {
-    carreraController.get(req, res);
-});
-app.get('/chats', (req, res) => {
-    userController.getAllUsers(req, res);
-});
+app.get('/logout', userController.logout);
+app.get('/careers', carreraController.get);
+app.get('/DMs', chatController.getDMs);
+app.get('/allusers', userController.getAllUsers);
 app.post('/register', userController.register);
 app.post('/login', userController.login);
+app.post('/newchat', chatController.newDM);
 
 
+const users = {};
 
-// WebSocket for real-time chat
 io.on('connection', (socket) => {
-    console.log('New user connected');
-    
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
+    console.log('New user connected:', socket.id);
+
+    socket.on('register', (user_id) => {
+        users[user_id] = socket.id;
+        console.log(`${user_id} registered with socket ID ${socket.id}`);
     });
 
-    socket.on('chatMessage', (user, msg) => {
-        // Broadcast message to all users
-        io.emit('chatMessage', user, msg);
+    socket.on('privateMessage', (data) => {
+        const { chatID, message, sender } = data;
+    
+        chatController.getUsersFromChat(chatID, (result) => {
+            if (!result || result.length === 0) {
+                console.log('No users found for this chat.');
+                return;
+            }
+    
+            const recipient = result[0].ID_usuario_a === sender ? result[0].ID_usuario_b : result[0].ID_usuario_a;
+            const recipientSocketId = users[recipient];
+    
+            if (recipientSocketId) {
+                io.to(recipientSocketId).emit('privateMessage', { message, sender });
+                console.log(`Message sent to ${recipient}`);
+                console.log(`Message: ${message}`);
+                console.log(`Sender: ${sender}`);
+            } else {
+                console.log(`${recipient} is not connected.`);
+            }
+        });
+    });
+    
+
+    socket.on('disconnect', () => {
+        console.log(`User disconnected: ${socket.id}`);
+        for (let user_id in users) {
+            if (users[user_id] === socket.id) {
+                delete users[user_id];
+                break;
+            }
+        }
     });
 });
 
