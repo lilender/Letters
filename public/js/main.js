@@ -159,6 +159,7 @@ $(document).ready(() => {
                 messageElement.appendChild(messageBox);
 
                 $('#message-container').append(messageElement);
+                window.addEventListener('load', scrollToBottom);
             }
         });
 
@@ -177,6 +178,7 @@ $(document).ready(() => {
             messageElement.appendChild(messageBox);
 
             $('#message-container').append(messageElement);
+            window.addEventListener('load', scrollToBottom);
         });
 
         $('#nuevo_chat').on('click', () => {
