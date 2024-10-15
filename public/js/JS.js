@@ -4,26 +4,33 @@ function myFunction() {
     timeOut = setTimeout(showPage, 3000);
 }
 
-// Selecciona todos los elementos con la clase 'nav-bar-chats'
     const chatElements = document.querySelectorAll('.nav-bar-chats');
 
-    // Función para quitar la clase 'selected' de todos los chats
     function clearSelection() {
         chatElements.forEach(chat => {
             chat.classList.remove('selected');
         });
     }
 
-    // Agrega un evento de clic a cada chat
     chatElements.forEach(chat => {
         chat.addEventListener('click', () => {
-            // Limpia la selección previa
             clearSelection();
-            // Agrega la clase 'selected' al chat clickeado
             chat.classList.add('selected');
         });
     });
 
+//Autoscroll aqui ta marlaaaaa :D
+const chatContainer = document.querySelector('.nav-bar-chat-container');
+
+// Función para hacer scroll al final del contenedor
+function scrollToBottom() {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// Llama a la función cuando la página se carga completamente
+window.addEventListener('load', scrollToBottom);
+
+// Si añades mensajes dinámicamente, llama a la función en ese momento también
 
 
 
