@@ -152,7 +152,7 @@ nav ul li:hover{
 }
 
 .nav-bar-container{
-  background: #83b9ce;
+  background: #85ceea;
   border-radius: 3rem;
   border-top-right-radius: 0rem;
   text-align: center;
@@ -199,23 +199,23 @@ nav ul li:hover{
 }
 
 .nav-bar-chat-container{
-  flex-grow: 1; /* Ocupa el espacio restante */
-  overflow-y: auto; /* Habilita el scroll vertical */
+  flex-grow: 1; 
+  overflow-y: auto;
   height: 100%;
-  min-height: calc(100%); /* Resta el footer */
+  min-height: calc(100%);
   &::-webkit-scrollbar{
-    width: 0.4rem; /* Ancho de la barra de desplazamiento */
+    width: 0.4rem;
   }
   &::-webkit-scrollbar-track{
-    background: #83b9ce; /* Color del fondo de la barra */
-    border-radius: 1rem; /* Bordes redondeados */
+    background: #83b9ce;
+    border-radius: 1rem;
   }
   &::-webkit-scrollbar-thumb{
-    background: linear-gradient(0deg, rgba(11,107,11,1) 0%, rgba(100,144,100,1) 100%);; /* Color del fondo de la barra */
-    border-radius: 1rem; /* Bordes redondeados */
+    background: linear-gradient(0deg, rgba(11,107,11,1) 0%, rgba(100,144,100,1) 100%);
+    border-radius: 1rem;
   }
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #0c3453; /* Color cuando el usuario pasa el mouse */
+    background-color: #0c3453;
   }
 }
 
@@ -286,21 +286,242 @@ nav ul li:hover{
   background-attachment: fixed;
   box-shadow: 1rem 2rem 4rem #1f233a;
   height: 10%;
+  width: 100%;
   cursor: pointer;
+  &:hover{
+    font-size: x-large;
+    width: 99.5%;
+    background-color:#142e6e;
+
+  }
+  h3{
+    color: white;
+    font-size: 1.2rem;
+    display: inline-block;
+    margin: 0.1rem;
+    &:hover{
+      color:#76caeb;
+    }
+  }
+
+  p{
+    color:white;
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0.1rem;
+  }
 }
 
-.profile-info h3{
-  color: white;
-  font-size: 1.2rem;
-  display: inline-block;
-  margin: 0.1rem;
+.profile-full-info{
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.814) 0%, rgba(255, 255, 255, 0) 50%);
+  background-color:#0C1F50;
+  border-top-right-radius: 3rem;  
+  margin: 0.2rem;
+  margin-right: 0rem;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  box-shadow: 1rem 2rem 4rem #1f233a;
+  height: 22%;
+  cursor: pointer;
+
+  h3{
+    color: white;
+    font-size: 1.7rem;
+    display: inline-block;
+    margin: 0;
+  }
+
+  p{
+    color:white;
+    font-size: 0.9rem;
+    display: inline-block;
+    letter-spacing: 0.1rem;
+    margin: 0;
+  }
+
+  .online{
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .carrera{
+    font-family: Mansalva;
+    font-size: medium;
+  }
+  
+  a{
+    text-align: left;
+    color: white;
+    img{
+      width: 2%;
+      height: auto;
+      margin: 0;
+      padding: o;
+    }
+    &:hover{
+      color:#5b9bb5;
+    }
+  }
 }
 
-.profile-info p{
-  color:white;
-  font-size: 1rem;
+.profile-full-info-image{
+  width: 9rem;
+  height: 9rem;
+  background: linear-gradient(180deg, rgba(46,51,85,1) 0%, rgba(48,112,137,1) 100%);
+  border-radius: 50%;
+  border: 0.25rem solid #157b3c;
   display: inline-block;
-  margin: 0.1rem;
+  text-align: center;
+  align-content: center;
+  img{
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+}
+
+.files-container{
+  .nav-tabs{
+    display: flex;
+    width: 99%;
+    border: none;
+    .nav-item{
+      background: #0f134e;
+        appearance: none;
+        width: 50%;
+        align-content: center;
+        text-align: center;
+        border: 0rem;
+        .nav-link {
+            appearance: none;
+            background: none;
+            border: none;
+            padding: 0.6rem 0.4rem;
+            cursor: pointer;
+            color: #ffffff;
+            font-weight: bold;
+            width: 100%;
+            &:hover{
+              background: linear-gradient(0deg, #07558c82 0%, #0c1f50c3 70%);
+            }
+        }
+    
+        .nav-link.active {
+          border-bottom: 0.1rem solid white;
+          background: linear-gradient(0deg, #07558c82 0%, #0c1f50c3 70%);
+        }
+    }
+  }
+}
+
+/*Offline, default*/
+.profile-full-image.selected{
+  border: 0.25rem solid #06082c;
+}
+
+.files{
+  width: 100%;
+  height: 64vh;
+  border-radius: 1rem;
+}
+
+.nav-bar-files-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  flex-grow: 1; 
+  overflow-y: auto;
+  height: 100%;
+  min-height: calc(100%);
+  padding: 1rem;
+  &::-webkit-scrollbar{
+    width: 0.4rem;
+  }
+  &::-webkit-scrollbar-track{
+    background: #83b9ce;
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: linear-gradient(0deg, rgba(11,107,11,1) 0%, rgba(100,144,100,1) 100%);
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #0c3453;
+  }
+}
+
+.user-files{
+  background: #6483c7f0;
+  border-radius: 0.3rem;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    background: #6483c76c;
+  }
+  img{
+    cursor: pointer;
+    width: 99%;
+    height: 99%;
+    object-fit: cover;
+    border-radius: 1rem;
+    &:hover{
+      width: 101%;
+      height: 101%;
+    }
+  }
+}
+
+.nav-bar-docs-container{
+  display: row;
+  grid-template-columns: repeat(1, 1fr);
+  flex-grow: 1; 
+  overflow-y: auto;
+  height: 100%;
+  min-height: calc(100%);
+  &::-webkit-scrollbar{
+    width: 0.4rem;
+  }
+  &::-webkit-scrollbar-track{
+    background: #83b9ce;
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: linear-gradient(0deg, rgba(11,107,11,1) 0%, rgba(100,144,100,1) 100%);
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #0c3453;
+  }
+}
+
+.user-docs{
+  background: #6483c7e8;
+  border-radius: 0.3rem;
+  height: 5rem;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  &:hover{
+    height: 5.5rem;
+  }
+  h3{
+    font-size: medium;
+  }
+  button{
+    background: #00000000;
+    border: white solid 0.1rem;
+    width: 4%;
+    box-shadow: none;
+    &:hover{
+      width: 5%;
+      background: #00000000;
+      border: white solid 0.1rem;
+    }
+  }
 }
 
 /*Mensajes de texto*/
@@ -463,16 +684,10 @@ nav ul li:hover{
 }
 
 
-.chat{
-  width: 100%;
-  height: 79vh;
-}
 
 .chat-input{
   width: 100%;
 }
-
-
 
 /*Foto de perfil chats*/
 .profile-image{
@@ -526,7 +741,10 @@ nav ul li:hover{
     background-size: cover; 
     background-repeat: no-repeat; 
     background-size: 25%; 
-    background-position: 50%; 
+    background-position: 50%; .chat{
+  width: 100%;
+  height: 79vh;
+}
     width: 20%; 
     height: 40%; 
     cursor: pointer;
@@ -646,7 +864,6 @@ h2{
   outline: none;
   width: 100%;
   height: 2.3rem;
-  transition: all 200ms;
 }
 
 .input-signin:focus{
