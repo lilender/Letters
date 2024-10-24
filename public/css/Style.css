@@ -382,6 +382,12 @@ nav ul li:hover{
   }
 }
 
+
+/*Offline, default*/
+.profile-full-info-image.selected{
+  border: 0.25rem solid #06082c;
+}
+
 .files-container{
   .nav-tabs{
     display: flex;
@@ -391,6 +397,40 @@ nav ul li:hover{
       background: #0f134e;
         appearance: none;
         width: 50%;
+        align-content: center;
+        text-align: center;
+        border: 0rem;
+        .nav-link {
+            appearance: none;
+            background: none;
+            border: none;
+            padding: 0.6rem 0.4rem;
+            cursor: pointer;
+            color: #ffffff;
+            font-weight: bold;
+            width: 100%;
+            &:hover{
+              background: linear-gradient(0deg, #07558c82 0%, #0c1f50c3 70%);
+            }
+        }
+    
+        .nav-link.active {
+          border-bottom: 0.1rem solid white;
+          background: linear-gradient(0deg, #07558c82 0%, #0c1f50c3 70%);
+        }
+    }
+  }
+}
+
+.files-container-groups{
+  .nav-tabs{
+    display: flex;
+    width: 99%;
+    border: none;
+    .nav-item{
+      background: #0f134e;
+        appearance: none;
+        width: 25%;
         align-content: center;
         text-align: center;
         border: 0rem;
